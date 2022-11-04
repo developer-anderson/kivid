@@ -1,4 +1,4 @@
-# crud-user-semge
+# CRUD KIVID
 Respositório criado, para expor o desafio proposto pela KIVID. O desafio visa, que aplicação possibilite realizar um CRUD de usuários utilizando as tencoloigas, PHP, Laravel e ReactJS
 
 COMO RODAR O PROJETO BAIXADO
