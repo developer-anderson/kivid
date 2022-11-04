@@ -18,8 +18,14 @@ Acessar o diretório do projeto
 
 Rodar o projeto React 
 ### npm start
-### cd backend -> Generate new key php artisan key:generate Clear the config php artisan config:clear Update cache php artisan config:cache
-### php artisan serve
+
+Rodar o projeto Laravel 
+### cd backend 
+### composer install
+### Gerar nova chave php artisan key:generate 
+### Limpar as configurações php artisan config:clear
+### Atualizar cache php artisan config:cache
+### iniciar servidor php artisan serve
 
 Gerenciar as rotas
 ### npm install react-router-dom@5.2.0
