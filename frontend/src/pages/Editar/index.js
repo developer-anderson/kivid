@@ -7,20 +7,18 @@ export const Editar = (props) => {
 
     const [id] = useState(props.match.params.id);
     const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
+   
     const [telefone, setTelefone] = useState('');
-    const [cpf, setCpf] = useState('');
+
     const [cep, setCep] = useState('');
     const [estado, setEstado] = useState('');
     const [cidade, setCidade] = useState('');
     const [numero, setNumero] = useState('');
     const [logradouro, setLogradouro] = useState('');
-    const [data_nascimento, setDataNascimento] = useState('');
     const [complemento, setComplemento] = useState('');
     const [pais, setPais] = useState('');
     const [senha, setSenha] = useState('');
-    const [id_perfil, setIdPerfil] = useState('');
-    const [dthr_atualizacao, setDataAtualizacao] = useState('');
+  
     const select = {
         display: "block",
         width: "100%",
@@ -50,7 +48,22 @@ export const Editar = (props) => {
         type: '',
         mensagem: ''
     })
-    const horario = new Date();
+    const getCep = async (cep) => {
+        if (cep.length >= 8) {
+          fetch("https://viacep.com.br/ws/" + cep + "/json/")
+            .then((response) => response.json())
+            .then((responseJson) => {
+              setEstado(responseJson.uf)
+              setCidade(responseJson.localidade)
+              setLogradouro(responseJson.logradouro)
+              setCep(cep)
+    
+            });
+        }
+    
+    
+    
+      }
 
     const editUsuario = async e => {
         e.preventDefault();
@@ -60,7 +73,7 @@ export const Editar = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nome, email, telefone, cep, cpf, estado, cidade, logradouro, data_nascimento, id_perfil, senha, pais, complemento, dthr_atualizacao, numero })
+            body: JSON.stringify({ nome,  telefone, cep,  estado, cidade, logradouro, pais, complemento,  numero })
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
@@ -89,20 +102,19 @@ export const Editar = (props) => {
                 .then((response) => response.json())
                 .then((responseJson) => {
                     setNome(responseJson.nome);
-                    setEmail(responseJson.email);
+              
                     setTelefone(responseJson.telefone);
-                    setCpf(responseJson.cpf);
+                 
                     setEstado(responseJson.estado);
                     setCidade(responseJson.cidade);
                     setCep(responseJson.cep);
-                    setDataNascimento(responseJson.data_nascimento);
+                 
                     setLogradouro(responseJson.logradouro);
-                    setIdPerfil(responseJson.id_perfil);
-                    setSenha(responseJson.senha);
+             
                     setPais(responseJson.pais);
                     setNumero(responseJson.numero);
                     setComplemento(responseJson.complemento);
-                    setDataAtualizacao(horario.getFullYear() + '-' + horario.getMonth() + '-' + horario.getDay() + ' ' + horario.getHours() + ':' + horario.getMinutes() + ':' + horario.getSeconds());
+                   
 
                 });
         }
@@ -132,29 +144,13 @@ export const Editar = (props) => {
                     <Label>Nome completo: </Label>
                     <Input type="text" name="nome" value={nome} placeholder="nome do usuário" onChange={e => setNome(e.target.value)} />
 
-                    <Label>CPF: </Label>
-                    <Input type="text" name="cpf" value={cpf} placeholder="CPF" onChange={e => setCpf(e.target.value)} />
+             
                     <Label>Telefone: </Label>
                     <Input type="text" name="telefone" value={telefone} placeholder="Telefone" onChange={e => setTelefone(e.target.value)} />
-                    <Label>E-mail: </Label>
-                    <Input type="email" name="email" value={email} placeholder="E-mail" onChange={e => setEmail(e.target.value)} />
 
-                    <Label>Senha: </Label>
-                    <Input type="password" name="senha" placeholder="Sua senha de acesso" onChange={e => setSenha(e.target.value)} />
-
-                    <Label>Data de nascimento: </Label>
-                    <Input type="date" name="data_nascimento" value={data_nascimento} onChange={e => setDataNascimento(e.target.value)} />
-
-
-                    <Label>Perfil:</Label>
-                    <select style={select} value={id_perfil} onChange={e => setIdPerfil(e.target.value)}>
-                        {options.map((item, index) => (
-                            <option value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
 
                     <Label>Cep: </Label>
-                    <Input type="text" name="cep" value={cep} onChange={e => setCep(e.target.value)} />
+                    <Input type="text" name="cep" value={cep} onChange={e => { getCep(e.target.value) }}  />
                     <Label>Pais: </Label>
                     <Input type="text" name="pais" value={pais} onChange={e => setPais(e.target.value)} />
                     <Label>Estado: </Label>
