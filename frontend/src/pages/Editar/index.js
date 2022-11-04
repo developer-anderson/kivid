@@ -16,8 +16,8 @@ export const Editar = (props) => {
     const [numero, setNumero] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [complemento, setComplemento] = useState('');
-    const [pais, setPais] = useState('');
-    const [senha, setSenha] = useState('');
+
+   
   
     const select = {
         display: "block",
@@ -75,7 +75,7 @@ export const Editar = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nome,  telefone, cep,  estado, cidade, logradouro, pais, complemento,  numero })
+            body: JSON.stringify({ nome,  telefone, cep,  estado, cidade, logradouro, complemento,  numero })
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
@@ -113,7 +113,6 @@ export const Editar = (props) => {
                  
                     setLogradouro(responseJson.logradouro);
              
-                    setPais(responseJson.pais);
                     setNumero(responseJson.numero);
                     setComplemento(responseJson.complemento);
                    
@@ -153,8 +152,7 @@ export const Editar = (props) => {
 
                     <Label>Cep: </Label>
                     <Input type="text" name="cep" value={cep} onChange={e => { getCep(e.target.value) }}  />
-                    <Label>Pais: </Label>
-                    <Input type="text" name="pais" value={pais} onChange={e => setPais(e.target.value)} />
+               
                     <Label>Estado: </Label>
                     <Input type="text" name="estado" value={estado} onChange={e => setEstado(e.target.value)} />
                     <Label>Cidade: </Label>

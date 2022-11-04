@@ -13,7 +13,7 @@ export const Cadastrar = () => {
   const [numero, setNumero] = useState('');
   const [logradouro, setLogradouro] = useState('');
   const [complemento, setComplemento] = useState('');
-  const [pais, setPais] = useState('');
+
   const [status, setStatus] = useState({
     type: '',
     mensagem: ''
@@ -67,7 +67,7 @@ export const Cadastrar = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ nome,  telefone, cep,  estado, cidade, logradouro, pais, complemento, numero })
+      body: JSON.stringify({ nome,  telefone, cep,  estado, cidade, logradouro,  complemento, numero })
     })
       .then((response) => response.json())
       .then((responseJson) => {
@@ -117,8 +117,7 @@ export const Cadastrar = () => {
 
           <Label>Cep: </Label>
           <Input type="text" name="cep" value={cep} onChange={e => { getCep(e.target.value) }} />
-          <Label>Pais: </Label>
-          <Input type="text" name="pais" value={pais} onChange={e => setPais(e.target.value)} />
+      
           <Label>Estado: </Label>
           <Input type="text" name="estado" value={estado} onChange={e => setEstado(e.target.value)} />
           <Label>Cidade: </Label>

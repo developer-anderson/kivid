@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->char('telefone', 100);
             $table->char('cep', 11);
             $table->char('estado', 11);
-            $table->char('pais', 11);
+         
             $table->char('cidade', 11);
             $table->char('logradouro', 100);
             $table->char('numero', 20);

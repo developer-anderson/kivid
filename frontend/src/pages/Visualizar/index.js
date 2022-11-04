@@ -6,7 +6,7 @@ import { Container, ConteudoTitulo, BotaoAcao,ButtonPrimary, ButtonInfo, Titulo,
 export const Visualizar = (props) => {
 
     const [data, setData] = useState([]);
-    const [atualziacao, setAtualizacao] = useState('');
+   
     const [id] = useState(props.match.params.id);
 
     useEffect(() => {
@@ -16,8 +16,7 @@ export const Visualizar = (props) => {
                 .then((responseJson) => {
                     //console.log(responseJson);
                     setData(responseJson);
-                    atualziacao = new Date(data.updated_at)
-                    setAtualizacao(atualziacao)
+                  
                 });
         }
         getUsuario();
