@@ -18,6 +18,7 @@ Acessar o diretório do projeto
 
 Rodar o projeto React 
 ### npm start
+### cd backend -> Generate new key php artisan key:generate Clear the config php artisan config:clear Update cache php artisan config:cache
 ### php artisan serve
 
 Gerenciar as rotas

@@ -58,7 +58,7 @@ export const Home = () => {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>E-mail</th>
+            <th>Telefone</th>
             <th>#</th>
             <th>#</th>
             <th>#</th>
@@ -68,7 +68,7 @@ export const Home = () => {
           {Object.values(data).map(Usuario => (
             <tr key={Usuario.id}>
               <td>{Usuario.nome}</td>
-              <td>{Usuario.email}</td>
+              <td>{Usuario.telefone}</td>
               <td>
                 <Link to={"/visualizar/" + Usuario.id}>
                   <FaRegClipboard />

@@ -16,15 +16,8 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->char('nome', 100);
-         
             $table->char('telefone', 100);
-    
-            $table->timestamp('dthr_criacao', $precision = 0)->default('CURRENT_TIMESTAMP');
-            $table->timestamp('dthr_atualizacao', $precision = 0);
-            $table->integer('id_perfil')->default(1);
-            $table->foreign('id_perfil')->references('id')->on('perfils');
             $table->char('cep', 11);
-            $table->date('data_nascimento', $precision = 0);
             $table->char('estado', 11);
             $table->char('pais', 11);
             $table->char('cidade', 11);
