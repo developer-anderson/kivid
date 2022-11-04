@@ -51,6 +51,9 @@ export const Cadastrar = () => {
 
         });
     }
+    else{
+      setCep(cep)
+    }
 
 
 

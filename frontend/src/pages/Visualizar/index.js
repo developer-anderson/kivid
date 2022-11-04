@@ -38,7 +38,7 @@ export const Visualizar = (props) => {
                 </BotaoAcao>
             </ConteudoTitulo>
             <ConteudoProd>Nome: {data.nome}</ConteudoProd>
-            <ConteudoProd>E-mail: {data.email}</ConteudoProd>
+
             <ConteudoProd>Telefone: {data.telefone}</ConteudoProd>
             <ConteudoProd>CPF: {data.cpf}</ConteudoProd>
             <ConteudoProd>Cep: {data.cep}</ConteudoProd>

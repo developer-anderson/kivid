@@ -60,7 +60,9 @@ export const Editar = (props) => {
     
             });
         }
-    
+        else{
+            setCep(cep)
+          }
     
     
       }
